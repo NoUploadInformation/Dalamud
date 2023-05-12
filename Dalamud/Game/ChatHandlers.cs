@@ -198,14 +198,6 @@ public class ChatHandlers : IServiceType
         if (!this.hasAutoUpdatedPlugins)
             this.AutoUpdatePlugins();
 
-        if (clientState.LocalPlayer != null && !this.hasSendMeasurement)
-        {
-            Task.Run(async () => await EventTracking.SendMeasurement(
-                                     clientState.LocalContentId,
-                                     clientState.LocalPlayer.ObjectId,
-                                     clientState.LocalPlayer.HomeWorld.Id));
-            this.hasSendMeasurement = true;
-        }
 #if !DEBUG && false
             if (!this.hasSeenLoadingMsg)
                 return;
